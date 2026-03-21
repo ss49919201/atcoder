@@ -4,13 +4,6 @@ def f(): Unit = {
   val s = sc.next()
   val g = s
     .groupBy(identity)
-  val max = g.values.toList
-    .map(_.length)
-    .max
-  println(s.filter((v) => {
-    g.get(v)
-      .match
-        case Some(got) => got.length != max
-        case None      => false
-  }))
+  val max = g.mapValues(_.length).values.max
+  s.filterNot(g(_).length == max).foreach(print)
 }
