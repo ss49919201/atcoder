@@ -1,4 +1,4 @@
-package abc444.b
+package abc443.b
 
 import scala.annotation.tailrec
 
@@ -8,15 +8,8 @@ def f(): Unit = {
   val n, k = sc.nextInt()
 
   @tailrec
-  def solve(count: Int, src: Int): Int = {
-    src match {
-      case 0 => count
-      case src =>
-        solve(
-          if src.toString.map(_.asDigit).sum == k then count + 1 else count,
-          src - 1
-        )
-    }
+  def solve(dec: Int, rest: Int, sum: Int): Int = {
+    if rest - dec <= 0 then sum else solve(dec + 1, rest - dec, sum + 1)
   }
-  println(solve(0, n))
+  println(solve(n, k, 0))
 }

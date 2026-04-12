@@ -1,3 +1,5 @@
+package abc449.b
+
 @main
 def run(): Unit = {
   val sc = new java.util.Scanner(System.in)
